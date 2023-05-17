@@ -1,10 +1,11 @@
 import { Link } from "@remix-run/react";
 
 export type Project = {
-  name: string;
   assignee: string;
-  dueDate: Date;
   description: string;
+  dueDate: Date;
+  name: string;
+  slug: string;
 };
 
 export default function Project({ project }: any) {

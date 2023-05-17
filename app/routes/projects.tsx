@@ -1,18 +1,33 @@
-import { Link } from "@remix-run/react";
+import { NavLink, Outlet, useLoaderData } from "@remix-run/react";
 
-export type Project = {
+import { getProjects } from "~/lib/wordpressService";
+
+export interface Project {
   assignee: string;
   description: string;
   dueDate: Date;
   name: string;
   slug: string;
-};
+}
 
-export default function Project({ project }: any) {
+export async function loader() {
+  const projects = await getProjects();
+  return projects;
+}
+
+export default function ProjectsPage({ project }: any) {
+  const projects = useLoaderData();
+  console.log({ projects });
+
   return (
-    <Link to={`/projects/${project.slug}`}>
-      <h2>{project.name}</h2>
-      <p>{project.assignee}</p>
-    </Link>
+    <div>
+      {projects.map((project: Project) => (
+        <NavLink to={project.slug} key={project.name}>
+          <h2>Project: {project.name}</h2>
+          <p>Assigned to: {project.assignee}</p>
+        </NavLink>
+      ))}
+      <Outlet />
+    </div>
   );
 }

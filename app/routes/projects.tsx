@@ -1,6 +1,6 @@
 import { NavLink, Outlet, useLoaderData } from "@remix-run/react";
 
-import { getProjects } from "~/lib/wordpressService";
+import { getProjects } from "~/lib/queries";
 
 export interface Project {
   description: string;

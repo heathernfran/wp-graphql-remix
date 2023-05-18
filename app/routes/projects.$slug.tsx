@@ -1,6 +1,6 @@
 import { LoaderArgs, json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { getProjectsBySlug } from "~/lib/wordpressService";
+import { getProjectsBySlug } from "~/lib/queries";
 
 export async function loader({ params }: LoaderArgs) {
   const projectBySlug = await getProjectsBySlug(params.slug);

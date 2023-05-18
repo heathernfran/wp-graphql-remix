@@ -1,6 +1,12 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { fetch } from "cross-fetch";
+import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
+
+const link = createHttpLink({
+  uri: "http://learn-wpgraphql.local/graphql",
+  fetch,
+});
 
 export const client = new ApolloClient({
-  uri: "http://learn-wpgraphql.local/graphql",
   cache: new InMemoryCache(),
+  link,
 });

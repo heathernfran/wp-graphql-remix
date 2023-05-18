@@ -15,7 +15,7 @@ export async function loader() {
   return projects;
 }
 
-export default function ProjectsPage({ project }: any) {
+export default function ProjectsPage() {
   const projects = useLoaderData();
 
   return (

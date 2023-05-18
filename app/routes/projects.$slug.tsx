@@ -7,7 +7,7 @@ export async function loader({ params }: LoaderArgs) {
   return json({ projectBySlug });
 }
 
-export async function ProjectDetailsPage() {
+export default function ProjectDetailsPage() {
   const data = useLoaderData<typeof loader>();
 
   return (
